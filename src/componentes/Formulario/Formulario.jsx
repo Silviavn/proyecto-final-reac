@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { db } from "../services/config";
+import { db } from "../../../services/config";
 import { collection, addDoc } from "firebase/firestore";
 //Campos de formulario
 const Formulario = () => {
