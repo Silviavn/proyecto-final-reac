@@ -8,6 +8,8 @@ const ItemDetail = ({id, nombre, precio, detalle, img}) => {
         <h3>ID: {id} </h3>
         <h3>Descripcion: {detalle} </h3>
         <img src={img} alt={nombre} />
+
+        
     </div>
   )
 }

@@ -18,7 +18,7 @@ const App = () => {
             <Route path="/item/:idItem" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<Cart/>}  />
             <Route path="/checkout" element={<Checkout/>}/>
-            <Route path="*" element={<h2>Sitio en construcción</h2>} />
+            <Route path="*" element={<h2>En construccion </h2>} />
           </Routes>
         </CarritoProvider>
       </BrowserRouter>
