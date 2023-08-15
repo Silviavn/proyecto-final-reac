@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   
 //Hacemos las peticiones hacia la base de datos, data toma la informacion del objeto
 useEffect( () => {
-const misProductos = idCategoria ? query(collection(db, "inventarii"),where("idCat", "==", idCategoria)) : collection(db, "inventario");
+const misProductos = idCategoria ? query(collection(db, "inventario"),where("idCat", "==", idCategoria)) : collection(db, "inventario");
 
 getDocs(misProductos)
 
