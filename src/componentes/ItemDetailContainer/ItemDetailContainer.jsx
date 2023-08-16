@@ -3,7 +3,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 //Importamos las nuevas funciones: 
 import { getDoc, doc } from "firebase/firestore";
-import { db } from "../../services/config";
+import { db } from "@services/config"
 
 const ItemDetailContainer = () => {
   const [producto, setProducto] = useState(null);
