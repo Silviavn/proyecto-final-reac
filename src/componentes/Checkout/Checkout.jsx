@@ -13,6 +13,7 @@ const Checkout = () => {
     const [emailConfirmacion, setEmailConfirmacion] = useState("");
     const [error, setError] = useState("");
     const [orderId, setOrdenId] = useState("");
+    const [comentario, setComentario] = useState("")
 
 
 
@@ -45,6 +46,7 @@ const Checkout = () => {
             apellido,
             telefono,
             email,
+            comentario,
             fecha: new Date()
         };
 
@@ -123,8 +125,13 @@ const Checkout = () => {
                     <input type="email" value={emailConfirmacion} onChange={(e) => setEmailConfirmacion(e.target.value)} />
                 </div>
 
+                <div className="form-group">
+                    <label htmlFor=""> Comentario opcional </label>
+                    <input type="comentario" value={comentario} onChange={(e) => setComentario(e.target.value)} />
+                </div>
+
                 {
-                    error && <p style={{ color: "red" }}> {error} </p>
+                    error &&  {error}
                 }
 
                 <button type="submit"> Finalizar Compra </button>
