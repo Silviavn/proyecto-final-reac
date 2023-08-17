@@ -15,20 +15,14 @@ const Checkout = () => {
     const [orderId, setOrdenId] = useState("");
     const [comentario, setComentario] = useState("")
 
-
-
-    //Aqui creamos las Funciones y validaciones 
-
     const manejadorFormulario = (e) => {
         e.preventDefault();
 
-        //aca obserbamos que los campos esten completos: 
         if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
             setError("Todos los campos son obligatorios porfavor verifique que esten completos");
             return;
         }
 
-        //aqui hacemos la peticion para validar que los campos del email sean iguales: 
         if (email !== emailConfirmacion) {
             setError("Los campos de email no coinciden porfavor verificar");
             return;
@@ -49,24 +43,20 @@ const Checkout = () => {
             fecha: new Date()
         };
 
-        //Aqui se actualiza el stock de productos y genera la orden de compra
+       
 
         Promise.all(
             orden.items.map(async (productoOrden) => {
                 const productoRef = doc(db, "productos", productoOrden.id);
-                //Por cada producto en la coleecion "productos" obtengo una referencia.
                 const productoDoc = await getDoc(productoRef);
                 const stockActual = productoDoc.data().stock;
-                //Data me permite acceder a la información del documento. 
 
                 await updateDoc(productoRef, {
                     stock: stockActual - productoOrden.cantidad
                 });
-                //  información actualizada. 
             })
         )
             .then(() => {
-                //Guardamos la orden en la base de datos: 
                 addDoc(collection(db, "ordenes"), orden)
                     .then((docRef) => {
                         setOrdenId(docRef.id);
@@ -86,7 +76,7 @@ const Checkout = () => {
 
     return (
         <div>
-            <h2>Checkout</h2>
+            <h2>Formulario de compra</h2>
             <form onSubmit={manejadorFormulario} className="formulario">
                 {carrito.map(producto => (
                     <div key={producto.id}>

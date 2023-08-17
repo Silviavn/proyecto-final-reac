@@ -8,8 +8,7 @@ import { db } from "@/services/config"
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
-  
-//la base de datos, data toma la informacion del objeto
+
 useEffect( () => {
 const misProductos = idCategoria ? query(collection(db, "productos"),where("idCat", "==", idCategoria)) : collection(db, "productos");
 
