@@ -19,21 +19,19 @@ const ItemDetail = ({ id, nombre, precio, img, stock }) => {
 
   const manejadorCantidad = (cantidad) => {
     setAgregarCantidad(cantidad);
-    //console.log("Productos agregados: " + cantidad);
-
-    //Ahora acá voy a crear un objeto con el item y la cantidad: 
-    const item = { id, nombre, precio };
+  
+    const item = { id, nombre, precio, detalle};
     agregarProducto(item, cantidad);
 
   }
   return (
     <div className='contenedorItem'>
+
       <h2>Nombre: {nombre} </h2>
       <h3>Precio: {precio} </h3>
       <h3>ID: {id} </h3>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam modi quibusdam quasi illum, assumenda at sunt iure voluptas quaerat tempore explicabo nam voluptates rem culpa voluptate. Ipsa qui dicta repellat.</p>
       <img src={img} alt={nombre} />
-
+     
       {
         agregarCantidad > 0 ? (<Link to="/cart"> Terminar compra </Link>) : (<ItemCount inicial={1} stock={stock} funcionAgregar={manejadorCantidad} />)
       }

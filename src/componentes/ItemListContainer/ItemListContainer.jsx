@@ -9,7 +9,7 @@ const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const { idCategoria } = useParams();
   
-//Hacemos las peticiones hacia la base de datos, data toma la informacion del objeto
+//la base de datos, data toma la informacion del objeto
 useEffect( () => {
 const misProductos = idCategoria ? query(collection(db, "productos"),where("idCat", "==", idCategoria)) : collection(db, "productos");
 
@@ -23,13 +23,12 @@ getDocs(misProductos)
   setProductos(nuevosProductos);
 })
 .catch(error => console.log(error))
-// aqui se vigila el estado de la categoria
 
 }, [idCategoria])
 
   return (
     <>
-      <h2 style={{ color: "blue", textAlign: "center" }}> Nuestros Productos </h2>
+      <h2 style={{ textAlign: "center" }}> Nuestros Productos </h2>
       <ItemList productos={productos} />
     </>
   )

@@ -17,24 +17,23 @@ const Checkout = () => {
 
 
 
-    //Funciones y validaciones: 
+    //Aqui creamos las Funciones y validaciones 
 
     const manejadorFormulario = (e) => {
         e.preventDefault();
 
-        //Verificamos que los campos esten completos: 
+        //aca obserbamos que los campos esten completos: 
         if (!nombre || !apellido || !telefono || !email || !emailConfirmacion) {
             setError("Todos los campos son obligatorios porfavor verifique que esten completos");
             return;
         }
 
-        //Validamos que los campos del email coincidan: 
+        //aqui hacemos la peticion para validar que los campos del email sean iguales: 
         if (email !== emailConfirmacion) {
             setError("Los campos de email no coinciden porfavor verificar");
             return;
         }
 
-        //Creamos el objeto de la orden. 
         const orden = {
             items: carrito.map(producto => ({
                 id: producto.item.id,
@@ -50,7 +49,7 @@ const Checkout = () => {
             fecha: new Date()
         };
 
-        //Vamos a modificar el código para que ejecute varias promesas en parelelo, por un lado quiero que actualice el stock de productos y por otro lado quiero que genere una orden de compra. Promise.All me permite todo esto. 
+        //Aqui se actualiza el stock de productos y genera la orden de compra
 
         Promise.all(
             orden.items.map(async (productoOrden) => {
@@ -63,7 +62,7 @@ const Checkout = () => {
                 await updateDoc(productoRef, {
                     stock: stockActual - productoOrden.cantidad
                 });
-                // subo la información actualizada. 
+                //  información actualizada. 
             })
         )
             .then(() => {
