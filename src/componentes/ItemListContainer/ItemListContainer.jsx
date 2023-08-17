@@ -3,7 +3,7 @@ import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 
 import { collection, getDocs, where, query } from "firebase/firestore"
-import { db } from "@services/config"
+import { db } from "@/services/config"
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
@@ -11,7 +11,7 @@ const ItemListContainer = () => {
   
 //Hacemos las peticiones hacia la base de datos, data toma la informacion del objeto
 useEffect( () => {
-const misProductos = idCategoria ? query(collection(db, "inventario"),where("idCat", "==", idCategoria)) : collection(db, "inventario");
+const misProductos = idCategoria ? query(collection(db, "productos"),where("idCat", "==", idCategoria)) : collection(db, "productos");
 
 getDocs(misProductos)
 

@@ -21,7 +21,7 @@
         <p> {contador} </p>
         <button onClick={incrementar}> + </button>
     </div>
-    <button onClick={()=> funcionAgregar(contador)}>Agregar al carrito</button>
+    <button onClick={()=> funcionAgregar(contador)}>Agregar a mi carrito</button>
     </>
   )
 }
